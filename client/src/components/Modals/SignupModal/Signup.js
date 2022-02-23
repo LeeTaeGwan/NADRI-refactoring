@@ -58,6 +58,7 @@ export default function Signup ({setSignupSuccessModal, signupSuccessModal}) {
     .then(result => {
       setCode(result.data.code)
       setSuccessMessage('인증메일이 발송되었습니다.')
+      setIsLoading(false) // 리팩토링 부분 이 부분을 추가하지 않으면 이메일 인증버튼을 한번 누른 이후에 계속 isLoading이 계속 true값으로 유지된다.
     })
     .catch(err => {
       setDangerMessage('이메일 발송에 실패했습니다!')
@@ -68,6 +69,7 @@ export default function Signup ({setSignupSuccessModal, signupSuccessModal}) {
     // console.log(userCode, code)
     setSuccessMessage('')
     setDangerMessage('')
+    setIsLoading(true)
     if (!code) return setDangerMessage('인증 메일을 먼저 발송하세요!')
 
     if (userCode !== code) return setDangerMessage('인증코드가 일치하지 않습니다!')
@@ -78,7 +80,7 @@ export default function Signup ({setSignupSuccessModal, signupSuccessModal}) {
       await setTimeout(() => {
         setSuccessMessage('이메일 확인이 완료되었습니다.')
       }, 1000);
-      
+      setIsLoading(false) // 리팩토링 부분 이 부분을 추가하지 않으면 이메일 인증버튼을 한번 누른 이후에 계속 isLoading이 계속 true값으로 유지된다.
     }
   }
 
@@ -219,7 +221,7 @@ export default function Signup ({setSignupSuccessModal, signupSuccessModal}) {
               : ''
             }
             {
-              chkEmail && !successMessage && !dangerMessage ? <img src='/img/loading.svg' style={{margin: '0', width: '40px', 'justifyContent': 'center'}}/>
+              isLoading && chkEmail && !successMessage && !dangerMessage ? <img src='/img/loading.svg' style={{margin: '0', width: '40px', 'justifyContent': 'center'}}/>
               : ''
             }
             <span id="dangerMsg">{dangerMessage}</span>
