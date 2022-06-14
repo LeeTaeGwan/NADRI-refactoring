@@ -1,15 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
 import styled from 'styled-components';
-
-import {
-  RandingContainer,
-  ImgSection,
-  LastImg,
-  FinalImg,
-  TrickImg,
-  TrickSection,
-  LastSection,
-} from '../components/LandingPage/styledRanding';
 import { Link } from 'react-router-dom';
 
 import Section1 from '../components/LandingPage/Section1';
@@ -20,6 +10,57 @@ import Section5 from '../components/LandingPage/Section5';
 import Section6 from '../components/LandingPage/Section6';
 import Footer from '../components/Footer'
 
+const RandingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  section:nth-child(2) {
+    background-color: #F2F2F2;
+  }
+
+  section:nth-child(4) {
+    background-color: #F2F2F2;
+  }
+
+  @media (max-width: 992px) {
+    & section:nth-child(3) {
+      & >:first-child {
+        height: auto;
+      }
+    }
+  }
+`
+
+const LastSection = styled.section`
+  width: 100%;
+  height: ${props => `${props.innerHeight}px`};
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+
+  .Btn {
+    width: 15vw;
+    height: 4.5vw;
+    font-size: 2vw;
+    border-radius: 20px;
+    background-color: #88ccff;
+    cursor: pointer;
+    border: none;
+    color: white;
+    box-shadow: 2px 2px 2px 1px rgb(180 180 180);
+    a {
+      color: white;
+    }
+  }
+
+  .Btn:active {
+    position: relative;
+    top: 2px;
+  }
+`
 
 export default function Landing () {
 
@@ -35,17 +76,13 @@ export default function Landing () {
       <Section5 innerHeight={innerHeight.current}/>
       <Section6 innerHeight={innerHeight.current}/>
 
-      {/* <TrickSection innerHeight={innerHeight.current}>
-        <TrickImg img={'/landingImg/풍경.png'}/>
-      </TrickSection> */}
 
-
-      {/* <LastSection innerHeight={innerHeight.current}>
+      <LastSection innerHeight={innerHeight.current}>
         <p>
           NADRI와 함께 나들이 한번 떠나보시겠어요?!
         </p>
         <Link to={'/'}><button className='Btn'>시작하기</button></Link>
-      </LastSection> */}
+      </LastSection>
       
       <Footer />
     </RandingContainer>

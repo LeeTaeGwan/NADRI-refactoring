@@ -33,14 +33,14 @@ const LastImg = styled.div`
       display: none;
       `)
     }
-    // else {
-    //   return(`
-    //     width: 100%;
-    //     height: 100%;
-    //     position: fixed;
-    //     bottom: 0;
-    //   `)
-    // }
+    else {
+      return(`
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        bottom: 0;
+      `)
+    }
   }};
   margin: 0 auto;
   height: 100%;

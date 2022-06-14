@@ -1,28 +1,6 @@
 import React from "react";
 import styled, {css, keyframes } from "styled-components";
 
-
-export const RandingContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  section:nth-child(2) {
-    background-color: #F2F2F2;
-  }
-
-  section:nth-child(4) {
-    background-color: #F2F2F2;
-  }
-
-  @media (max-width: 992px) {
-    & section:nth-child(3) {
-      & >:first-child {
-        height: auto;
-      }
-    }
-  }
-`
-
 export const ImgSection = styled.section`
   width: 100%;
   height: ${props => `${props.innerHeight}px`};
