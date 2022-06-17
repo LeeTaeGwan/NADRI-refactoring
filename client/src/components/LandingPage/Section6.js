@@ -22,20 +22,8 @@ const FinalImg = styled.div`
     const percent = ((endY - startY)/100)
     const curPercent = ((scrollY - startY) / percent)
 
-    // return(`
-    
-    // width: 70%;
-    // height: 70%;
-    // position: absolute;
-    // margin: auto;
-    // top: 0;
-    // right: 0;
-    // bottom: 0;
-    // left: 0;
-    // `)
-
     if(isValid) {
-      
+      // console.log(100 - (curPercent - 100) * 0.3, curPercent)
       return(`
         width: ${100 - (curPercent - 100) * 0.3}%;
         height: ${100 - (curPercent - 100) * 0.3}%;
@@ -49,28 +37,16 @@ const FinalImg = styled.div`
       
     }
     else if(!isValid && scrollY >= endY) {
-      console.log(width, innerHeight)
+      console.log(width*0.7)
       return(`
         width: ${width*0.7}px;
         height: ${innerHeight*0.7}px;
         position: absolute;
-        margin: auto;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
+        bottom: ${(innerHeight - innerHeight*0.7) / 2}px; // (뷰포트 높이 - 사진 높이) / 2
+        left: ${(width - width*0.7) / 2}px; // (뷰포트 길이 - 사진 길이) / 2
       `)
     }
   }};
-  // 이미지의 위치를 조정시켜줘야 함
-`
-
-const Test = styled.div`
-  width: 100px;
-  height: 100px;
-  background-color: peru;
-  position: absolute;
-  bottom: 0;
 `
 
 export default function Section6({innerHeight}) {

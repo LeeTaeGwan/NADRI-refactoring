@@ -153,7 +153,7 @@ export default function Footer () {
             </span> 
             <span className='info'>
               Front end<br/> 
-            freshman1998 @ naver.com
+            cokid98 @ naver.com
             </span>
           </div>
         </Profile>
@@ -197,7 +197,7 @@ export default function Footer () {
               <img src='/img/gitHubLogo.png'/>
             </a>
           </div>
-          <a href='https://github.com/codestates/NADRI' target={"_blank"}>
+          <a href='https://github.com/LeeTaeGwan/NADRI-refactoring' target={"_blank"}>
             NADRI GitHub Repository
           </a>
       </Profile>

@@ -17,7 +17,6 @@ const Section = styled.section`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: limegreen;
 
   @media (max-width: 992px) {
     flex-direction: column;
