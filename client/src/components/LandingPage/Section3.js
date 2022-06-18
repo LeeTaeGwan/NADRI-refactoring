@@ -1,7 +1,7 @@
 import React, {useState, useRef, useEffect} from "react";
 import styled, {css, keyframes} from "styled-components";
 
-const showImgLeft = keyframes`
+const showImg = keyframes`
   0% {
     transform: translate(-200px, -200px);
     opacity: 0;
@@ -30,7 +30,7 @@ const Section = styled.section`
   }
 `
 
-const Section3_Left_Desc = styled.div`
+const Desc = styled.div`
 width: 50%;
 height: 80%;
 display: flex;
@@ -52,7 +52,7 @@ p {
 }
 `
 
-const Section3_Right_Img = styled.div`
+const Img = styled.div`
 width: 40%;
 height: 80%;
 transition: all 1s;
@@ -72,7 +72,7 @@ ${(props) => { // 여기가 새로 추가된 코드
       if(isValid) {
         
         return(css`
-          animation-name: ${showImgLeft};
+          animation-name: ${showImg};
           animation-duration: 1s;
           animation-timing-function: ease-in-out;
         `)
@@ -89,9 +89,9 @@ export default function Section3({innerHeight}) {
   const target = useRef(null)
 
   const options = {
-    root: null, // .container class를 가진 엘리먼트를 root로 설정. null일 경우 브라우저 viewport
-    rootMargin: '0px', // rootMargin을 '10px 10px 10px 10px'로 설정
-    threshold: 0.1 // 타겟 엘리먼트가 교차영역에 진입했을 때, 교차영역에 타켓 엘리먼트의 50%가 있을 때, 교차 영역에 타켓 엘리먼트의 100%가 있을 때 observe가 반응한다.
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
   }
 
   const io = new IntersectionObserver(([{isIntersecting}]) => {
@@ -104,18 +104,15 @@ export default function Section3({innerHeight}) {
 
   return (
     <Section innerHeight={innerHeight}>
-        <Section3_Left_Desc>
-          <h1>
-            좋아요 기능을 사용하여 가고싶은 곳을 저장하세요!
-          </h1>
-          <p>
-          마음에드는 게시글에 좋아요를 눌러 즐겨찾기에 저장해보세요!
-          </p>
-        </Section3_Left_Desc>
+        <Desc>
+          <h1>좋아요 기능을 사용하여 가고싶은 곳을 저장하세요!</h1>
 
-        <Section3_Right_Img isValid={isValid} ref={target}>
+          <p>마음에드는 게시글에 좋아요를 눌러 즐겨찾기에 저장해보세요!</p>
+        </Desc>
+
+        <Img isValid={isValid} ref={target}>
           <img src='landingImg/like.gif'></img>
-        </Section3_Right_Img>
+        </Img>
       </Section>
   )
 }

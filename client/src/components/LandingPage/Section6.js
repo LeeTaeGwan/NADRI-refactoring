@@ -1,14 +1,13 @@
 import React, {useState, useRef, useEffect} from "react";
 import styled, {css, keyframes} from "styled-components";
 
-const ImgSection = styled.section`
+const Section = styled.section`
   width: 100%;
   height: ${props => `${props.innerHeight*2}px`};
-  background-color: black;
   position: relative;
 `
 
-const FinalImg = styled.div`
+const Img = styled.div`
   width: 100%;
   height: 50%;
   background-repeat: no-repeat;
@@ -84,8 +83,8 @@ export default function Section6({innerHeight}) {
   })
   
   return(
-    <ImgSection innerHeight={innerHeight} ref={target}>
-      <FinalImg img={'/landingImg/풍경.png'} width={width.current} innerHeight={innerHeight} isValid={isValid} startY={startY.current} endY={endY.current} scrollY={scrollY}/>
-    </ImgSection >
+    <Section innerHeight={innerHeight} ref={target}>
+      <Img img={'/landingImg/풍경.png'} width={width.current} innerHeight={innerHeight} isValid={isValid} startY={startY.current} endY={endY.current} scrollY={scrollY}/>
+    </Section >
   )
 }

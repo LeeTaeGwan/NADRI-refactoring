@@ -18,6 +18,7 @@ const Section = styled.section`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: #F2F2F2;
 
   @media (max-width: 992px) {
     flex-direction: column;
@@ -30,7 +31,7 @@ const Section = styled.section`
   }
 `
 
-const Section2_Left_Img = styled.div`
+const Img = styled.div`
     width: 40%;
     height: 80%;
     transition: all 1s;
@@ -62,7 +63,7 @@ const Section2_Left_Img = styled.div`
   }
 `
 
-const Section2_Right_Desc = styled.div`
+const Desc = styled.div`
 width: 50%;
 height: auto;
 display: flex;
@@ -90,9 +91,9 @@ export default function Section2({innerHeight}) {
   const target = useRef(null)
 
   const options = {
-    root: null, // .container class를 가진 엘리먼트를 root로 설정. null일 경우 브라우저 viewport
-    rootMargin: '0px', // rootMargin을 '10px 10px 10px 10px'로 설정
-    threshold: 0.1 // 타겟 엘리먼트가 교차영역에 진입했을 때, 교차영역에 타켓 엘리먼트의 50%가 있을 때, 교차 영역에 타켓 엘리먼트의 100%가 있을 때 observe가 반응한다.
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
   }
 
   const io = new IntersectionObserver(([{isIntersecting}]) => {
@@ -105,15 +106,17 @@ export default function Section2({innerHeight}) {
 
   return (
     <Section innerHeight={innerHeight}>
-      <Section2_Left_Img isValid={isValid} ref={target}>
-        <img src='landingImg/posting.gif'></img>
-      </Section2_Left_Img>
 
-      <Section2_Right_Desc>
+      <Img isValid={isValid} ref={target}>
+        <img src='landingImg/posting.gif'></img>
+      </Img>
+
+      <Desc>
           <h1>나만아는 장소 공유!</h1>
           <br />
           <p>다른사람들은 잘 모르는 나만의 이야기가 담긴 장소를<br /> 지도와 카테고리별로 분류하고 공유해보세요!</p>
-      </Section2_Right_Desc>
+      </Desc>
+
     </Section>
   )
 }

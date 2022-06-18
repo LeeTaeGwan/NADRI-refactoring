@@ -2,15 +2,6 @@ import React, {useState, useRef, useEffect} from "react";
 import styled, {css, keyframes} from "styled-components";
 import { Link } from "react-router-dom";
 
-const move_Bus = keyframes`
-  0% {
-    transform: translate(-100%);
-  }
-  100% {
-    transform: translate(100%);
-  }
-`
-
 const Section = styled.section`
   width: 100%;
   height: ${props => `${props.innerHeight}px`};
@@ -29,15 +20,14 @@ const Section = styled.section`
   }
 `
 
-const First_Desc = styled.div`
-    width: 50%;
+const Desc = styled.div`
+  width: 50%;
   height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10%;
-  // border: 1px solid black;
 
   h1 {
     font-size: 2vw;
@@ -46,8 +36,9 @@ const First_Desc = styled.div`
   }
 
   p {
-    font-size: 1.5vw;
+    font-size: 2.6vw;
     line-height: 1.5;
+    font-weight: 500;
   }
 
   span {
@@ -77,11 +68,6 @@ const First_Desc = styled.div`
   }
 
   a:hover ~ img {
-    // animation-name: ${move_Bus};
-    // animation-duration: 1s;
-    // animation-timing-function: ease-in-out;
-    // animation-iteration-count: infinite;
-    // animation-direction: alternate;
     position: relative;
     left: 100%;
   }
@@ -89,7 +75,7 @@ const First_Desc = styled.div`
   img {
     width: 15%;
     height: auto;
-    transform: translate(-100%);
+    transform: translate(-300%);
     transition: all 1.5s ease;
     position: relative;
     left: 0;
@@ -100,14 +86,15 @@ export default function Section1({innerHeight}) {
   
   return(
       <Section innerHeight={innerHeight}>
-        <First_Desc>
-          <p>
-            나만아는 좋은 곳을 다른 사람과 공유해보세요!
-          </p>
+        <Desc>
+          <p>나만아는 좋은 곳을 다른 사람과 공유해보세요!</p>
+
           <span>NADRI</span>
+
           <Link to={'/'}><button className='Btn'>시작하기</button></Link>
+
           <img id='moveBus' src='img/nadri-logo-small.png' />
-        </First_Desc>
+        </Desc>
       </Section>
   )
 }

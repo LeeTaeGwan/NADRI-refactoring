@@ -12,12 +12,12 @@ const disappear = keyframes`
   }
 `
 
-const ImgSection = styled.section`
+const Section = styled.section`
   width: 100%;
   height: ${props => `${props.innerHeight}px`};
 `
 
-const LastImg = styled.div`
+const Img = styled.div`
   ${(props) => {
     const {isValid, scrollY, startY, endY} = props
     const percent = ((endY - startY)/100)
@@ -58,9 +58,9 @@ export default function Section5({innerHeight}) {
   const endY = useRef(innerHeight * 4)
 
   const options = {
-    root: null, // .container class를 가진 엘리먼트를 root로 설정. null일 경우 브라우저 viewport
-    rootMargin: '0px', // rootMargin을 '10px 10px 10px 10px'로 설정
-    threshold: 0 // 타겟 엘리먼트가 교차영역에 진입했을 때, 교차영역에 타켓 엘리먼트의 50%가 있을 때, 교차 영역에 타켓 엘리먼트의 100%가 있을 때 observe가 반응한다.
+    root: null,
+    rootMargin: '0px',
+    threshold: 0
   }
 
   const io = new IntersectionObserver(([{isIntersecting}]) => {
@@ -84,8 +84,8 @@ export default function Section5({innerHeight}) {
   })
 
   return(
-    <ImgSection innerHeight={innerHeight} ref={target}>
-        <LastImg img={'/landingImg/forest.png'} isValid={isValid} startY={startY.current} endY={endY.current} scrollY={scrollY}/>
-    </ImgSection>
+    <Section innerHeight={innerHeight} ref={target}>
+        <Img img={'/landingImg/forest.png'} isValid={isValid} startY={startY.current} endY={endY.current} scrollY={scrollY}/>
+    </Section>
   )
 }
